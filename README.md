@@ -3,17 +3,11 @@
 - Implementation of Reinforcement Learning to solve the Grid World in Python.
 - The rest of the documentation is coming soon.
 - I plan to use Deep Q-Learning to solve the grid world problem
-
+- The Q-Learning implementation here follows an epsilon greedy with a decay
 ## Introduction
 
 
 ## Definition
-
-
-## The 10-Armed Test Bed
-
-
-## Ads Dataset
 
 
 ## Conclusions
