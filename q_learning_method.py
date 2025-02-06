@@ -143,7 +143,7 @@ for row in range(0, gridSize):
 # Plotting
 sns.set_theme(style='darkgrid')
 fig, ax = plt.subplots(nrows=1, ncols=1)
-ax = sns.heatmap(data=valueTable, cmap='crest', linewidths=0.5, linecolor='white', annot=True)
+ax = sns.heatmap(data=valueTable, cmap='crest', linewidths=0.8, linecolor='white', annot=True)
 ax.set_title('Final value table')
 plt.savefig('figures/ql_final_value_table.png')
 plt.show()
