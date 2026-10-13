@@ -19,7 +19,7 @@
 
 ## Code Requirements
 The code was run and tested using the following:
-- Python		3.10.11
-- matplotlib	3.9.0
+- Python		3.14.3
+- matplotlib	3.11.2
 - seaborn		0.13.2
-- numpy			1.26.3
+- numpy			2.5.4
