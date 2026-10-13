@@ -43,7 +43,7 @@ class GridWorld:
             next_state = state
 
         done = next_state == self.terminal_state
-        reward = 1.0 if done else -0.1
+        reward = 1.0 if done else -0.01
 
         return next_state, reward, done
 
@@ -103,10 +103,13 @@ class MonteCarloAgent:
 
         value_table = self.value_table.copy()
 
+        # Terminal state's defined value
+        value_table[self.environment.terminal_state] = 1.0
+
         return value_table
 
 
-def plot_results(value_table, output_directory: str = "figures"):
+def plot_results(value_table, output_directory: str = "figures", save_figures:bool=False):
     """
     Plot and save Q-learning results.
     """
@@ -131,7 +134,8 @@ def plot_results(value_table, output_directory: str = "figures"):
         ax=ax,
     )
 
-    fig.savefig(output_directory / "mc_final_value_table.png", dpi=300)
+    if save_figures:
+        fig.savefig(output_directory / "mc_final_value_table.png", dpi=300)
 
     plt.show()
 
@@ -173,6 +177,7 @@ def main():
     # Plot Results
     plot_results(
         value_table=value_table,
+        save_figures=False,
     )
 
     execution_time = time.time() - start_time

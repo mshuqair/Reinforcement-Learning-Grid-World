@@ -59,7 +59,7 @@ class GridWorld:
             next_state = state
 
         done = next_state == self.terminal_state
-        reward = 1 if done else -0.1
+        reward = 1 if done else -0.01
 
         return next_state, reward, done
 
@@ -188,7 +188,8 @@ class QLearningAgent:
         return value_table
 
 
-def plot_results(value_table, steps_per_episode, total_rewards_per_episode, output_directory="figures"):
+def plot_results(value_table, steps_per_episode, total_rewards_per_episode,
+                 output_directory="figures", save_figures:bool=False):
     """
     Plot and save Q-learning results.
     """
@@ -213,7 +214,8 @@ def plot_results(value_table, steps_per_episode, total_rewards_per_episode, outp
         ax=ax,
     )
 
-    fig.savefig(output_directory / "ql_final_value_table.png", dpi=300)
+    if save_figures:
+        fig.savefig(output_directory / "ql_final_value_table.png", dpi=300)
 
     # Steps to Goal
     fig, ax = plt.subplots(figsize=(5, 4), layout="constrained", )
@@ -228,7 +230,8 @@ def plot_results(value_table, steps_per_episode, total_rewards_per_episode, outp
     ax.set_xlabel("Episode")
     ax.set_ylabel("Steps per Episode")
 
-    fig.savefig(output_directory / "ql_steps_to_goal.png", dpi=300)
+    if save_figures:
+        fig.savefig(output_directory / "ql_steps_to_goal.png", dpi=300)
 
     # Accumulated Rewards
     fig, ax = plt.subplots(figsize=(5, 4), layout="constrained", )
@@ -243,7 +246,8 @@ def plot_results(value_table, steps_per_episode, total_rewards_per_episode, outp
     ax.set_xlabel("Episode")
     ax.set_ylabel("Total Rewards")
 
-    fig.savefig(output_directory / "ql_total_rewards_per_episode.png", dpi=300)
+    if save_figures:
+        fig.savefig(output_directory / "ql_total_rewards_per_episode.png", dpi=300)
 
     plt.show()
 
@@ -295,6 +299,7 @@ def main():
         value_table=value_table,
         steps_per_episode=agent.steps_per_episode,
         total_rewards_per_episode=agent.total_rewards_per_episode,
+        save_figures=False,
     )
 
     execution_time = time.time() - start_time
